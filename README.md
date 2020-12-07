@@ -60,18 +60,18 @@ Personal Project and in prosess.
 ## To Do List to feature this project.
 
 * [x] Live most recent Covid-19 data and update automatically with API.
- * [x] Parse the REST API from public to access live data.
- * [x] Update the data in the main view.
+  * [x] Parse the REST API from public to access live data.
+  * [x] Update the data in the main view.
 * [x] Visualize the number of infected case on the chart.
- * [x] Impemented open source Chart library thruough Cocoapod.
- * [x] change the color of the elements in the chart.
+  * [x] Impemented open source Chart library thruough Cocoapod.
+  * [x] change the color of the elements in the chart.
 * [x] Design the UI/UX from scratch for easy access for the user.
- * [x] Choose color for user friendly
- * [x] Get icons to display the cases and navigation bars.
+  * [x] Choose color for user friendly
+  * [x] Get icons to display the cases and navigation bars.
 * [ ] Disbribution of the live data according to the entire United States and each states.
- * [x] Created segue for tableView to display states for user to choose.
- * [ ] Get the results and update the new data and chart in main.
- * [ ] Create search bar in the StateTableView for the easy access.
+  * [x] Created segue for tableView to display states for user to choose.
+  * [ ] Get the results and update the new data and chart in main.
+  * [ ] Create search bar in the StateTableView for the easy access.
 * [ ] Get Covid-19 related news APIs and display in the News tap.
 * [ ] Use mapkit or googlemap SDK for visualizing the infected numbers with colored circle.
 
