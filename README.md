@@ -86,8 +86,8 @@ Clone the repo
    git clone https://github.com/roypark2638/COVID-Report-2
    ```
    
-   
-###CocoaPods Install
+### CocoaPods Install   
+
 Add `pod 'Charts'` to your Podfile. "Charts" is the name of the library.  
 Add `TinyConstraints'` to your Podfile. "TinyConstraints" is the name of the library. UI features for adding shadow and corners.
 
