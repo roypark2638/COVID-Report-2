@@ -53,7 +53,7 @@ struct CovidManager {
 //                        }
                         var covidModel = [CovidModel]()
                         for x in stride(from: covidData.count - 1, through: 0, by: -1) {
-                            let infectedNumber = covidData[x]["positive"] as! Int
+                            let infectedNumber = covidData[x]["positive"] as? Int ?? 0
                             let deathNumber = covidData[x]["death"] as? Int ?? 0
                             let VentilatorNumber = covidData[x]["onVentilatorCurrently"] as? Int ?? 0
                             let recoveredNumber = covidData[x]["recovered"] as? Int ?? 0

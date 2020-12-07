@@ -16,9 +16,13 @@ class StateSelectTableViewController: UIViewController {
     @IBOutlet weak var stateSelectTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        covidManager.delegate = self
         stateSelectTableView.delegate = self
         stateSelectTableView.dataSource = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 }
 
