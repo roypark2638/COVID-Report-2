@@ -23,44 +23,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 
         chartView.rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: valFormatter)
 
-//        var month:String {
-//            let start = String(xAxis.).index(String(date).startIndex, offsetBy: 4)
-//            let end = String(date).index(String(date).endIndex, offsetBy: -2)
-//            let tempMonth = String(String(date)[start..<end])
-//
-//            switch Int(tempMonth) {
-//            case 01:
-//                return "Jan"
-//            case 02:
-//                return "Feb"
-//            case 03:
-//                return "Mar"
-//            case 04:
-//                return "Apr"
-//            case 05:
-//                return "May"
-//            case 06:
-//                return "Jun"
-//            case 07:
-//                return "Jul"
-//            case 08:
-//                return "Aug"
-//            case 09:
-//                return "Sep"
-//            case 10:
-//                return "Oct"
-//            case 11:
-//                return "Nov"
-//            case 12:
-//                return "Dec"
-//            default:
-//                return ""
-//            }
-//        }
-//        chartView.xAxis.setLabelCount(:)
-//        chartView.xAxis.setLabelCount(360, force: true)
-//        let months = [1:"Jan", 31:"Feb", 61:"Mar", 91:"Apr", 121:"May", 151:"Jun", 181:"Jul", 211:"Aug", 241:"Sep", 271:"Oct", 301:"Nov", 331:"Dec"]
-//        let months = ["Jan", "Feb", "Mar", "Apr","May","Jun", "Jul", "Aug","Sep","Oct","Nov", "Dec",]
         let months = ["Jan","Jan","Jan","Jan","Jan","Jan","Jan","Jan","Jan","Jan",
                       "Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb","Feb",
                       "Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar","Mar",
@@ -99,47 +61,22 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var increasedSevereCasesLabel: UILabel!
     @IBOutlet weak var increasedrecoveredLabel: UILabel!
     @IBOutlet weak var updateTime: UILabel!
-    @IBOutlet weak var statesPicker: UIPickerView!
-    
-    
     @IBOutlet weak var areaSegment: UISegmentedControl!
-//        = {
-//        let v = UISegmentedControl()
-//        return v
-//    }()
     @IBOutlet weak var totalInfectedView: UIView!
-//        = {
-//        let v = UIView()
-//        return v
-//    }()
     @IBOutlet weak var totalDeathView: UIView!
-//        = {
-//        let v = UIView()
-//        return v
-//    }()
-    
     @IBOutlet weak var dateInfectedView: UIView!
-//        = {
-//        let v = UIView()
-//        return v
-//    }()
-    
     @IBOutlet weak var dateDeathView: UIView!
-//        = {
-//        let v = UIView()
-//        return v
-//    }()
     
     
     override func viewWillAppear(_ animated: Bool) {
         covidManager.fetchUSCovidData()
+//        covidManager.fetchStatesCovidData(stateInitial: "CA")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         lineChart.delegate = self
         covidManager.delegate = self
-        statesPicker.delegate = self
-        statesPicker.dataSource = self
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -163,11 +100,16 @@ class HomeViewController: UIViewController, ChartViewDelegate {
 //        lineChart.heightAnchor.constraint(equalToConstant: 235).isActive = true
     }
     
-    
+//MARK: TableView Delegate Methods
     @IBAction func areaSegmentSelected(_ sender: UISegmentedControl) {
-
+        performSegue(withIdentifier: "goToStateList", sender: self)
     }
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destinationVC = segue.destination as! StateSelectTableViewController
+//
+//    }
+    
+//MARK: SetBackGroundEffects
     
     func setBackgroundToUIView() {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -284,19 +226,19 @@ extension HomeViewController: CovidManagerDelegate {
 
 //MARK: - UIPickerView
 
-extension HomeViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return K.states.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return K.states[row]
-    }
-}
+//extension HomeViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return K.states.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return K.states[row]
+//    }
+//}
 
 //MARK: - UIViewForCornerAndShadow
 

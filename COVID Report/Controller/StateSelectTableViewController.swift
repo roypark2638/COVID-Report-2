@@ -9,46 +9,34 @@ import UIKit
 
 
 
-class StateSelectTableViewController: UIViewController {
+class StateSelectTableViewController: UITableViewController {
     
     var covidManager = CovidManager()
     var stateDictionary = StateTitle()
     @IBOutlet weak var stateSelectTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        stateSelectTableView.delegate = self
-        stateSelectTableView.dataSource = self
+
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-}
-
-
-extension StateSelectTableViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(K.states[indexPath.row])
+//MARK: TableViewDelegate Methods
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedState = stateDictionary.stateDictionary[K.states[indexPath.row]]!
+        print(selectedState)
         covidManager.fetchStatesCovidData(stateInitial: selectedState)
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
     }
-}
-
-extension StateSelectTableViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return K.states.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.statesCellIdentifier, for: indexPath)
         
         cell.textLabel?.text = K.states[indexPath.row]
         return cell
     }
-    
-    
 }

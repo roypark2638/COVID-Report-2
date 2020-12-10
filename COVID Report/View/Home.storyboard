@@ -31,6 +31,40 @@
             </objects>
             <point key="canvasLocation" x="-1968" y="757"/>
         </scene>
+        <!--State Select Table View Controller-->
+        <scene sceneID="Qi8-HY-FfB">
+            <objects>
+                <tableViewController id="PXe-MI-Ttl" customClass="StateSelectTableViewController" customModule="COVID_Report" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xIr-Ut-0jl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="Gan-Rf-aPq">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="fe3-Ig-Zda">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fe3-Ig-Zda" id="EA9-y8-wh2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PXe-MI-Ttl" id="mRe-Ni-VjC"/>
+                            <outlet property="delegate" destination="PXe-MI-Ttl" id="m2O-tQ-gRh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="GbC-QK-bsl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lxd-aa-YP2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-965" y="1452"/>
+        </scene>
         <!--Home-->
         <scene sceneID="NuN-ma-k32">
             <objects>
@@ -42,7 +76,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image-4" translatesAutoresizingMaskIntoConstraints="NO" id="U5S-zl-fjn">
                                 <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-64-cYR">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-64-cYR" customClass="goToStateList">
                                 <rect key="frame" x="20" y="150" width="374" height="32"/>
                                 <segments>
                                     <segment title="United State"/>
@@ -51,8 +85,7 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="secondaryLabelColor"/>
                                 <connections>
-                                    <action selector="areaSegmentSelected:" destination="sPd-YB-fQQ" eventType="valueChanged" id="EGz-J0-Ils"/>
-                                    <segue destination="P2A-sA-E9m" kind="presentation" id="bze-PG-b01"/>
+                                    <segue destination="PXe-MI-Ttl" kind="presentation" identifier="goToStateList" id="Q9v-2P-4b2"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HXS-tn-o1t" userLabel="UpdateTime">
@@ -356,9 +389,6 @@
                                     <constraint firstAttribute="height" constant="281" id="nne-JO-jJe"/>
                                 </constraints>
                             </stackView>
-                            <pickerView hidden="YES" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcE-xJ-2KI" userLabel="states">
-                                <rect key="frame" x="0.0" y="597" width="414" height="216"/>
-                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KGF-ux-aTp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -366,14 +396,11 @@
                             <constraint firstItem="MIH-64-cYR" firstAttribute="leading" secondItem="KGF-ux-aTp" secondAttribute="leading" constant="20" id="4mt-If-k4E"/>
                             <constraint firstItem="jnw-ak-clg" firstAttribute="top" secondItem="UKG-Te-n0L" secondAttribute="bottom" constant="15" id="6xg-V7-Ee4"/>
                             <constraint firstItem="HXS-tn-o1t" firstAttribute="leading" secondItem="KGF-ux-aTp" secondAttribute="leading" constant="20" id="7sF-FD-91K"/>
-                            <constraint firstItem="lcE-xJ-2KI" firstAttribute="trailing" secondItem="KGF-ux-aTp" secondAttribute="trailing" id="Bdd-Ou-ZB7"/>
                             <constraint firstAttribute="trailing" secondItem="U5S-zl-fjn" secondAttribute="trailing" id="CZd-2s-hXy"/>
-                            <constraint firstItem="lcE-xJ-2KI" firstAttribute="bottom" secondItem="KGF-ux-aTp" secondAttribute="bottom" id="CsX-0M-X7O"/>
                             <constraint firstItem="UKG-Te-n0L" firstAttribute="top" secondItem="HXS-tn-o1t" secondAttribute="bottom" constant="10" id="FB1-0a-Usn"/>
                             <constraint firstItem="HXS-tn-o1t" firstAttribute="top" secondItem="MIH-64-cYR" secondAttribute="bottom" constant="10" id="Hfz-4C-AZE"/>
                             <constraint firstItem="jnw-ak-clg" firstAttribute="leading" secondItem="KGF-ux-aTp" secondAttribute="leading" constant="15" id="RrN-q6-ulc"/>
                             <constraint firstAttribute="bottom" secondItem="U5S-zl-fjn" secondAttribute="bottom" id="SH7-X8-G3o"/>
-                            <constraint firstItem="lcE-xJ-2KI" firstAttribute="leading" secondItem="KGF-ux-aTp" secondAttribute="leading" id="XjZ-Bg-J0I"/>
                             <constraint firstItem="KGF-ux-aTp" firstAttribute="trailing" secondItem="MIH-64-cYR" secondAttribute="trailing" constant="20" id="ZYL-HJ-bfS"/>
                             <constraint firstItem="UKG-Te-n0L" firstAttribute="leading" secondItem="KGF-ux-aTp" secondAttribute="leading" constant="15" id="bDG-WP-YOr"/>
                             <constraint firstItem="U5S-zl-fjn" firstAttribute="top" secondItem="KGF-ux-aTp" secondAttribute="top" id="bHi-XJ-SOb"/>
@@ -396,7 +423,6 @@
                         <outlet property="increasedInfectedLabel" destination="re9-1H-Oyf" id="t3G-Jm-moR"/>
                         <outlet property="increasedSevereCasesLabel" destination="a84-NH-plc" id="JTQ-dN-M6f"/>
                         <outlet property="increasedrecoveredLabel" destination="gAZ-BX-cD7" id="Wtw-Yp-2RH"/>
-                        <outlet property="statesPicker" destination="lcE-xJ-2KI" id="2xq-VQ-8RG"/>
                         <outlet property="totalDeathLabel" destination="j9N-qG-WaB" id="6h9-eH-53V"/>
                         <outlet property="totalDeathView" destination="gF2-2h-KmR" id="GqK-Jk-Y18"/>
                         <outlet property="totalInfectedLabel" destination="YVf-aw-wn3" id="vMV-Ma-UEG"/>
@@ -409,46 +435,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amx-Xg-1qx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1968.1159420289857" y="1451.7857142857142"/>
-        </scene>
-        <!--State Select Table View Controller-->
-        <scene sceneID="xvM-B6-3H1">
-            <objects>
-                <viewController id="P2A-sA-E9m" customClass="StateSelectTableViewController" customModule="COVID_Report" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2Ce-Gy-wzj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UTw-GD-WdO">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8bN-iy-nK7">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8bN-iy-nK7" id="9mI-lJ-eyL">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="dfJ-qZ-dyA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="UTw-GD-WdO" secondAttribute="trailing" id="GNI-8J-hQy"/>
-                            <constraint firstItem="UTw-GD-WdO" firstAttribute="top" secondItem="2Ce-Gy-wzj" secondAttribute="top" id="WIX-ZH-gUI"/>
-                            <constraint firstItem="UTw-GD-WdO" firstAttribute="leading" secondItem="2Ce-Gy-wzj" secondAttribute="leading" id="pgU-kU-Lt3"/>
-                            <constraint firstAttribute="bottom" secondItem="UTw-GD-WdO" secondAttribute="bottom" id="wmn-OV-Yfc"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="stateSelectTableView" destination="UTw-GD-WdO" id="P9B-1E-1Tc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mUq-jr-AYp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1123" y="1452"/>
         </scene>
     </scenes>
     <resources>

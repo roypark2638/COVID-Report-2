@@ -19,12 +19,12 @@ struct CovidManager {
     var delegate: CovidManagerDelegate?
     
     func fetchUSCovidData() {
-        let urlString = "\(usCovidURL)/us/daily.json";
+        let urlString = "\(usCovidURL)/us/daily.json"
         performRequest(with: urlString)
     }
     
     func fetchStatesCovidData(stateInitial: String) {
-        let urlString = "\(usCovidURL)/states/\(stateInitial)/daily.json";
+        let urlString = "\(usCovidURL)/states/\(stateInitial)/daily.json"
         performRequest(with: urlString)
     }
     

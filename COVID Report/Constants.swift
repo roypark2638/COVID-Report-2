@@ -6,6 +6,10 @@
 //
 
 struct K {
+    static let newsCellIdentifier = "newArticleCell"
+    static let newsNibName = "NewsArticleCell"
+    static let statesCellIdentifier = "cell"
+    
     static let stateDictionary = [
         "United State": "US",
         "Alabama": "AL",
@@ -86,4 +90,6 @@ struct K {
         "NC","ND","MP","OH","OK","OR","PW","PA","PR","RI","SC","SD","TN",
         "TX","UT","VT","VI","VA","WA","WV","WI","WY"
     ]
+    
+    
 }
