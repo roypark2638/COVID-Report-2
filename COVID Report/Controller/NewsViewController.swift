@@ -13,8 +13,6 @@ class NewsViewController: UIViewController  {
     // Data variables
     var newsManager = NewsManager()
     var articles = [NewsModel]()
-    private var imageCache: [String: UIImage] = [:]
-//    private var downloader = ImageDownloader()
     
     // UIKit Variables
     @IBOutlet weak var tableView: UITableView!
@@ -27,11 +25,6 @@ class NewsViewController: UIViewController  {
         tableView.register(UINib(nibName: "NewsArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.autoresizingMask = [.flexibleWidth, .flexibleWidth]
-        
-//        if let tv = tableView {
-//            view.addSubview(tv)
-//        }
         
         newsManager.fetchNewsData()
     }
@@ -57,40 +50,51 @@ extension NewsViewController: NewsManagerDelegate {
 extension NewsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(articles)
-        DispatchQueue.main.async {
-            print("Print the number of articles: \(self.articles.count)")
-            self.articles.count
-        }
-        
         return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-            let article = self.articles[indexPath.row]
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! NewsArticleCell
-    //        let identifier = article.identifier
+                
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! NewsArticleCell
+        // currently display the correct images but beacuse of the different rendering time
+        // there is a problem of showing a wrong image when you scroll fast.
+        // possible fix is to use third party image downloader.
+        cell.newsArticleImage.image = nil
         DispatchQueue.main.async {
+            
+            if let mainImageString = self.articles[indexPath.row].urlToImage {
+                
+                cell.newsArticleImage.imageFromURL(urlString: mainImageString)
+            }
+            
+            print(cell.newsHeadingLabel.text = self.articles[indexPath.row].sourceLogo)
             cell.newsHeadingLabel.text = self.articles[indexPath.row].newsTitle
             cell.newsSubLabel.text = self.articles[indexPath.row].safeDescription
             cell.newsTimeLabel.text = self.articles[indexPath.row].passedTimeSinceDate
             
-                
+            //yourImageViewOutlet.imageFromURL(urlString: yourUrl)
             
         }
         return cell
     }
     
-    
 }
 extension NewsViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
+        let article = articles[indexPath.row]
+        
+        guard let articleURL = article.url else {
+            print("error, loading the article.")
+            return
+        }
+        
+        let safariView = SFSafariViewController(url: articleURL)
+        present(safariView, animated: true, completion: nil)
+        
     }
 }
 
-    
-    
+
+
 

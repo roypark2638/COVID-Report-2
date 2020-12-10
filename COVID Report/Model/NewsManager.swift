@@ -49,6 +49,7 @@ struct NewsManager {
             let decodedData = try decoder.decode(NewsResult.self, from: newsData)
             var newsModel = [NewsModel]()
             for x in stride(from: decodedData.articles.count - 1, to: 0, by: -1) {
+                
                 let sourceName = decodedData.articles[x].source?.name ?? ""
                 let title = decodedData.articles[x].title ?? ""
                 let description = decodedData.articles[x].description ?? ""

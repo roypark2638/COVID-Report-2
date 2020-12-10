@@ -33,11 +33,6 @@ struct NewsModel {
         return "https://logo.clearbit.com/\(host)"
     }
     
-    var urlToGreySourceLogo: String {
-        guard let host = url?.host else { return "" }
-        return "https://logo.clearbit.com/\(host)?greyscale=true"
-    }
-    
     var passedTimeSinceDate: String {
         if let fromDate = publishedConvertedToDate {
         let toDate = Date()
