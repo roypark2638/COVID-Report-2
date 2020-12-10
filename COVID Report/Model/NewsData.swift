@@ -13,13 +13,12 @@ struct NewsResult: Codable {
 
 struct Article: Codable {
     var source: Source?
-    var title: String
+    var title: String?
     var description: String?
     var content: String?
-    var url: URL?
+    var url: URL
     var urlToImage: String?
-    var publishedAt: String
-
+    var publishedAt: String?
 
 }
 

@@ -13,8 +13,8 @@ protocol NewsManagerDelegate {
     func didFail(with error: Error)
 }
 struct NewsManager {
-    let newsURL = "https://newsapi.org/v2/everything?q=covid&language=en&source=us&apiKey="
-    let newsApiKey = "32ef00a987a4451ead6105a6e67e07a6"
+    private let newsURL = "https://newsapi.org/v2/everything?q=covid&language=en&source=us&apiKey="
+    private let newsApiKey = "32ef00a987a4451ead6105a6e67e07a6"
     var delegate: NewsManagerDelegate?
     func fetchNewsData() {
         let urlString = "\(newsURL)\(newsApiKey)"
@@ -49,13 +49,13 @@ struct NewsManager {
             let decodedData = try decoder.decode(NewsResult.self, from: newsData)
             var newsModel = [NewsModel]()
             for x in stride(from: decodedData.articles.count - 1, to: 0, by: -1) {
-                let sourceName = decodedData.articles[x].source as? String ?? ""
-                let title = decodedData.articles[x].title
-                let description = decodedData.articles[x].description
-                let content = decodedData.articles[x].content
+                let sourceName = decodedData.articles[x].source?.name ?? ""
+                let title = decodedData.articles[x].title ?? ""
+                let description = decodedData.articles[x].description ?? ""
+                let content = decodedData.articles[x].content ?? ""
                 let url = decodedData.articles[x].url
-                let urlToImage = decodedData.articles[x].urlToImage
-                let publishedAt = decodedData.articles[x].publishedAt
+                let urlToImage = decodedData.articles[x].urlToImage ?? ""
+                let publishedAt = decodedData.articles[x].publishedAt 
                 
                 let article = NewsModel(sourceName: sourceName, newsTitle: title, description: description, content: content, url: url, urlToImage: urlToImage, publishedAt: publishedAt)
                 

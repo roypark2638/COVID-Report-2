@@ -6,8 +6,8 @@
 //
 
 struct K {
-    static let newsCellIdentifier = "newArticleCell"
-    static let newsNibName = "NewsArticleCell"
+//    static let newsCellIdentifier = "ReusableCell"
+//    static let newsNibName = "NewArticleCell"
     static let statesCellIdentifier = "cell"
     
     static let stateDictionary = [

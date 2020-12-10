@@ -6,26 +6,36 @@
 //
 
 import UIKit
+import SafariServices
 
 class NewsViewController: UIViewController  {
+    
+    // Data variables
     var newsManager = NewsManager()
     var articles = [NewsModel]()
+    private var imageCache: [String: UIImage] = [:]
+//    private var downloader = ImageDownloader()
+    
+    // UIKit Variables
     @IBOutlet weak var tableView: UITableView!
-    override func viewWillAppear(_ animated: Bool) {
-        newsManager.fetchNewsData()
-    }
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         newsManager.delegate = self
+        tableView.register(UINib(nibName: "NewsArticleCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: K.newsNibName, bundle: nil), forCellReuseIdentifier: K.newsCellIdentifier)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleWidth]
         
+//        if let tv = tableView {
+//            view.addSubview(tv)
+//        }
         
+        newsManager.fetchNewsData()
     }
     
-
 }
 //MARK: NewsViewController Delegate Methods
 extension NewsViewController: NewsManagerDelegate {
@@ -33,9 +43,13 @@ extension NewsViewController: NewsManagerDelegate {
         for article in newsResults {
             self.articles.append(article)
         }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
     func didFail(with error: Error) {
-        print("Error reading data. \(error)")
+        print("Error reading news data in NewsViewController Delegate Methods. \(error)")
     }
 }
 
@@ -44,16 +58,28 @@ extension NewsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        print(articles)
+        DispatchQueue.main.async {
+            print("Print the number of articles: \(self.articles.count)")
+            self.articles.count
+        }
+        
         return articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let newsCell = articles[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.newsCellIdentifier, for: indexPath) as! NewsArticleCell
-        cell.newsHeadingLabel.text = articles[indexPath.row].newsTitle
-        
-        
+            let article = self.articles[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! NewsArticleCell
+    //        let identifier = article.identifier
+        DispatchQueue.main.async {
+            cell.newsHeadingLabel.text = self.articles[indexPath.row].newsTitle
+            cell.newsSubLabel.text = self.articles[indexPath.row].safeDescription
+            cell.newsTimeLabel.text = self.articles[indexPath.row].passedTimeSinceDate
+            
+                
+            
+        }
         return cell
     }
     
