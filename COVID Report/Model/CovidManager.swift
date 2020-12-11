@@ -12,8 +12,6 @@ protocol CovidManagerDelegate {
     func didFailWithError(_ error: Error)
 }
 
-
-
 struct CovidManager {
     let usCovidURL = "https://api.covidtracking.com/v1"
     var delegate: CovidManagerDelegate?
@@ -53,12 +51,14 @@ struct CovidManager {
 //                        }
                         var covidModel = [CovidModel]()
                         for x in stride(from: covidData.count - 1, through: 0, by: -1) {
+                            
                             let infectedNumber = covidData[x]["positive"] as? Int ?? 0
                             let deathNumber = covidData[x]["death"] as? Int ?? 0
                             let VentilatorNumber = covidData[x]["onVentilatorCurrently"] as? Int ?? 0
                             let recoveredNumber = covidData[x]["recovered"] as? Int ?? 0
                             let updateTime = covidData[x]["dateChecked"] as? String ?? "2020-00-00T00:00:00Z"
                             let today = covidData[x]["date"] as! Int
+//                            let month = covidData[x]["month"] as! String
                             
                             covidModel.append(CovidModel(positive: infectedNumber, death: deathNumber, onVentilatorCurrently: VentilatorNumber, recovered: recoveredNumber, lastModified: updateTime, date: today))
                         }

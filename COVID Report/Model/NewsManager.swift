@@ -14,7 +14,8 @@ protocol NewsManagerDelegate {
 }
 struct NewsManager {
     private let newsURL = "https://newsapi.org/v2/everything?q=covid&language=en&source=us&apiKey="
-    private let newsApiKey = "32ef00a987a4451ead6105a6e67e07a6"
+    private let newsApiKey = APIKey.newsAPIKey
+    
     var delegate: NewsManagerDelegate?
     func fetchNewsData() {
         let urlString = "\(newsURL)\(newsApiKey)"
@@ -56,7 +57,7 @@ struct NewsManager {
                 let content = decodedData.articles[x].content ?? ""
                 let url = decodedData.articles[x].url
                 let urlToImage = decodedData.articles[x].urlToImage ?? ""
-                let publishedAt = decodedData.articles[x].publishedAt 
+                let publishedAt = decodedData.articles[x].publishedAt
                 
                 let article = NewsModel(sourceName: sourceName, newsTitle: title, description: description, content: content, url: url, urlToImage: urlToImage, publishedAt: publishedAt)
                 

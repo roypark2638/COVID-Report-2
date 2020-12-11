@@ -20,6 +20,7 @@ struct NewsModel {
         let formatter = ISO8601DateFormatter()
         return formatter.date(from: publishedAt ?? "") ?? nil
     }
+    
     var safeDescription: String {
         return description ?? content!
     }
@@ -34,6 +35,12 @@ struct NewsModel {
     }
     
     var passedTimeSinceDate: String {
+        
+        var publishedConvertedToDate: Date? {
+            let formatter = ISO8601DateFormatter()
+            return formatter.date(from: publishedAt ?? "") ?? nil
+        }
+        
         if let fromDate = publishedConvertedToDate {
         let toDate = Date()
         

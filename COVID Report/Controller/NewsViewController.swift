@@ -30,6 +30,8 @@ class NewsViewController: UIViewController  {
     }
     
 }
+
+
 //MARK: NewsViewController Delegate Methods
 extension NewsViewController: NewsManagerDelegate {
     func didUpdateNews(_ newsManager: NewsManager,_ newsResults: [NewsModel]) {
@@ -59,26 +61,24 @@ extension NewsViewController: UITableViewDataSource {
         // currently display the correct images but beacuse of the different rendering time
         // there is a problem of showing a wrong image when you scroll fast.
         // possible fix is to use third party image downloader.
-        cell.newsArticleImage.image = nil
+        cell.newsArticleImage.image = nil // set defaults image to nil in order not to use reusable cell displaying again.
+        
         DispatchQueue.main.async {
             
             if let mainImageString = self.articles[indexPath.row].urlToImage {
-                
                 cell.newsArticleImage.imageFromURL(urlString: mainImageString)
             }
             
-            print(cell.newsHeadingLabel.text = self.articles[indexPath.row].sourceLogo)
             cell.newsHeadingLabel.text = self.articles[indexPath.row].newsTitle
             cell.newsSubLabel.text = self.articles[indexPath.row].safeDescription
-            cell.newsTimeLabel.text = self.articles[indexPath.row].passedTimeSinceDate
-            
-            //yourImageViewOutlet.imageFromURL(urlString: yourUrl)
+            cell.newsTimeLabel.text = self.articles[indexPath.row].publishedAt
             
         }
         return cell
     }
-    
 }
+
+//MARK:: TableViewDelegate Methods
 extension NewsViewController:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

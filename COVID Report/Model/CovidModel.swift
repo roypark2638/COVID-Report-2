@@ -15,35 +15,41 @@ struct CovidModel {
     let lastModified: String
     let date: Int
 
+
+    var monthOfDate: String {
+        var firstNumberOfMonth = date / 1000
+        var secondNumberOfMonth = date / 100
+        firstNumberOfMonth = firstNumberOfMonth % 10
+        secondNumberOfMonth = secondNumberOfMonth % 10
+        return (String(firstNumberOfMonth) + String(secondNumberOfMonth))
+    }
+    
     var month:String {
-        let start = String(date).index(String(date).startIndex, offsetBy: 4)
-        let end = String(date).index(String(date).endIndex, offsetBy: -2)
-        let tempMonth = String(String(date)[start..<end])
-        
-        switch Int(tempMonth) {
-        case 01:
+
+        switch String(monthOfDate) {
+        case "01":
             return "Jan"
-        case 02:
+        case "02":
             return "Feb"
-        case 03:
+        case "03":
             return "Mar"
-        case 04:
+        case "04":
             return "Apr"
-        case 05:
+        case "05":
             return "May"
-        case 06:
+        case "06":
             return "Jun"
-        case 07:
+        case "07":
             return "Jul"
-        case 08:
+        case "08":
             return "Aug"
-        case 09:
+        case "09":
             return "Sep"
-        case 10:
+        case "10":
             return "Oct"
-        case 11:
+        case "11":
             return "Nov"
-        case 12:
+        case "12":
             return "Dec"
         default:
             return ""
