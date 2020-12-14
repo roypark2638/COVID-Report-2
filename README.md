@@ -3,8 +3,8 @@ Personal Project and in prosess.
 
 ![Copy of COVID-19 Report](https://user-images.githubusercontent.com/47404333/101321490-4bfb5600-381a-11eb-878e-6ca0187550fb.png)
 
-
-![Screen Shot 2020-12-06 at 11 36 14 PM](https://user-images.githubusercontent.com/47404333/101322423-d85a4880-381b-11eb-885d-9e6e33e22b2e.png)
+<img src="https://user-images.githubusercontent.com/47404333/101322423-d85a4880-381b-11eb-885d-9e6e33e22b2e.png" width="220" height="500"> 
+<img src="https://user-images.githubusercontent.com/47404333/102125333-60cd8000-3dfe-11eb-9201-1eedff6951a6.png" width="220" height="500"> 
 
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
