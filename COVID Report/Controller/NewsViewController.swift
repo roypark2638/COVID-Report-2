@@ -71,7 +71,7 @@ extension NewsViewController: UITableViewDataSource {
             
             cell.newsHeadingLabel.text = self.articles[indexPath.row].newsTitle
             cell.newsSubLabel.text = self.articles[indexPath.row].safeDescription
-            cell.newsTimeLabel.text = self.articles[indexPath.row].publishedAt
+            cell.newsTimeLabel.text = self.articles[indexPath.row].passedTimeSinceDate
             
         }
         return cell
