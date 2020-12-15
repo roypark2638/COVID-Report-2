@@ -71,7 +71,7 @@ Personal Project and in prosess.
   * [x] Created segue for tableView to display states for user to choose.
   * [ ] Get the results and update the new data and chart in main.
   * [ ] Create search bar in the StateTableView for the easy access.
-* [ ] Get Covid-19 related news APIs and display in the News tap.
+* [x] Get Covid-19 related news APIs and display in the News tap.
 * [ ] Use mapkit or googlemap SDK for visualizing the infected numbers with colored circle.
 
 
