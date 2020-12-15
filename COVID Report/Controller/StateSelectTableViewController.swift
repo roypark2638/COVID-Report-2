@@ -11,6 +11,7 @@ import UIKit
 
 class StateSelectTableViewController: UITableViewController {
     
+    var segueCompletion: ((String) -> Void)?    
     var covidManager = CovidManager()
     var stateDictionary = StateTitle()
     @IBOutlet weak var stateSelectTableView: UITableView!
@@ -24,9 +25,11 @@ class StateSelectTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let selectedState = stateDictionary.stateDictionary[K.states[indexPath.row]]!
-        print(selectedState)
-        covidManager.fetchStatesCovidData(stateInitial: selectedState)
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: false, completion: {
+                        self.segueCompletion?(selectedState)
+        })
+//        covidManager.fetchStatesCovidData(stateInitial: selectedState)
+//        dismiss(animated: true, completion: nil)
         
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var dateDeathView: UIView!
     
     var covidManager = CovidManager()
-    var lineChart: LineChartView = {
+    lazy var lineChart: LineChartView = {
         
         let chartView = LineChartView()
         chartView.leftAxis.enabled = false
@@ -68,6 +68,20 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     
     @IBAction func areaSegmentSelected(_ sender: UISegmentedControl) {
         performSegue(withIdentifier: "goToStateList", sender: self)
+        
+        let stateTableViewController = StateSelectTableViewController()
+        stateTableViewController.segueCompletion = { selectedState in
+            
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToStateList" {
+            let destinationVC = segue.destination as! StateSelectTableViewController
+            destinationVC.segueCompletion = { selectedState in
+                self.covidManager.fetchStatesCovidData(stateInitial: selectedState)
+            }
+        }
     }
     
     
@@ -81,7 +95,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     }
     
     
-//MARK: SetBackGroundEffects
+//MARK: SetBackgroundEffects
     func setBackgroundToUIView() {
         UIGraphicsBeginImageContext(view.frame.size)
         UIImage(named: "Image-3")?.draw(in: self.view.bounds)
