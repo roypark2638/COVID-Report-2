@@ -39,7 +39,6 @@ struct NewsManager {
                 }
             }
             task.resume()
-            
         }
     }
     // i need to have a collection of Article instance

@@ -60,6 +60,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GbC-QK-bsl"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Gan-Rf-aPq" id="1Mz-ZL-H4e"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lxd-aa-YP2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -77,16 +80,15 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-64-cYR" customClass="goToStateList">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-64-cYR">
                                 <rect key="frame" x="20" y="150" width="374" height="32"/>
                                 <segments>
                                     <segment title="United State"/>
                                     <segment title="States"/>
-                                    <segment title="County"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="secondaryLabelColor"/>
                                 <connections>
-                                    <segue destination="PXe-MI-Ttl" kind="presentation" identifier="goToStateList" id="Q9v-2P-4b2"/>
+                                    <action selector="areaSegmentSelected:" destination="sPd-YB-fQQ" eventType="valueChanged" id="DEd-Ga-4dE"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="HXS-tn-o1t" userLabel="UpdateTime">
@@ -154,7 +156,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="185" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGk-2A-aZJ">
-                                                        <rect key="frame" x="63.5" y="8" width="58" height="17.5"/>
+                                                        <rect key="frame" x="63.5" y="8" width="58.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="16"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
@@ -215,7 +217,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Death" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CS-Al-peN">
-                                                        <rect key="frame" x="71" y="8" width="43.5" height="17.5"/>
+                                                        <rect key="frame" x="71.5" y="8" width="42.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="16"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
@@ -279,7 +281,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Severe Cases" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0T4-Il-fTU">
-                                                        <rect key="frame" x="44.5" y="8" width="96" height="17.5"/>
+                                                        <rect key="frame" x="43.5" y="8" width="98.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="16"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
@@ -328,7 +330,7 @@
                                                 <rect key="frame" x="199" y="0.0" width="185" height="128"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recovered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wce-4o-UCV">
-                                                        <rect key="frame" x="54.5" y="8" width="76" height="15.5"/>
+                                                        <rect key="frame" x="54" y="8" width="77.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="NunitoSans-Regular" family="Nunito Sans" pointSize="16"/>
                                                         <color key="textColor" systemColor="systemGrayColor"/>
                                                         <nil key="highlightedColor"/>
@@ -415,7 +417,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Nih-2F-lSU"/>
                     <connections>
-                        <outlet property="areaSegment" destination="MIH-64-cYR" id="uIp-Ow-hAC"/>
+                        <outlet property="areaSegment" destination="MIH-64-cYR" id="BTm-ew-Vkx"/>
                         <outlet property="dateDeathView" destination="fWU-VI-uRz" id="6mA-Bq-JAs"/>
                         <outlet property="dateInfectedView" destination="vSb-ub-TYj" id="sr1-LP-2fr"/>
                         <outlet property="imageStackView" destination="jnw-ak-clg" id="FnL-W2-XiE"/>
@@ -431,6 +433,7 @@
                         <outlet property="totalRecoverLabel" destination="XBJ-7q-hZK" id="JYM-US-qEc"/>
                         <outlet property="totalSevereCasesLabel" destination="aGO-U0-V5J" id="bh0-kq-0fr"/>
                         <outlet property="updateTime" destination="PLz-CE-KIw" id="3nA-3d-0jx"/>
+                        <segue destination="PXe-MI-Ttl" kind="presentation" identifier="goToStateList" id="Tth-Jw-y2i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amx-Xg-1qx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

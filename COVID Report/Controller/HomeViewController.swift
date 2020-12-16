@@ -45,7 +45,6 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         return chartView
     }()
     
-
     override func viewWillAppear(_ animated: Bool) {
         covidManager.fetchUSCovidData()
     }
@@ -67,8 +66,12 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     
     
     @IBAction func areaSegmentSelected(_ sender: UISegmentedControl) {
-        performSegue(withIdentifier: "goToStateList", sender: self)
-        
+        if sender.selectedSegmentIndex == 1 {
+            performSegue(withIdentifier: "goToStateList", sender: self)
+        }
+        else if sender.selectedSegmentIndex == 0 {
+            covidManager.fetchUSCovidData()
+        }
         let stateTableViewController = StateSelectTableViewController()
         stateTableViewController.segueCompletion = { selectedState in
             

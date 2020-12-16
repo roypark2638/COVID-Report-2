@@ -39,7 +39,7 @@
 		97AC1A10256919E7008727E0 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97AC1A0A256919E7008727E0 /* Raleway-Regular.ttf */; };
 		97AC1A11256919E7008727E0 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97AC1A0B256919E7008727E0 /* Montserrat-SemiBold.ttf */; };
 		97AC1A4D256B0391008727E0 /* StateSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC1A4C256B0391008727E0 /* StateSelectTableViewController.swift */; };
-		97AC1A52256B07AF008727E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC1A51256B07AF008727E0 /* Constants.swift */; };
+		97AC1A52256B07AF008727E0 /* ConstantsStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC1A51256B07AF008727E0 /* ConstantsStates.swift */; };
 		97AC6EAA256DEF830081DD1F /* StateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC6EA8256DEF830081DD1F /* StateTableViewCell.swift */; };
 		97AC6EAB256DEF830081DD1F /* StateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97AC6EA9256DEF830081DD1F /* StateTableViewCell.xib */; };
 		97AC6EB0256DF0E10081DD1F /* StateTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AC6EAF256DF0E10081DD1F /* StateTitle.swift */; };
@@ -102,7 +102,7 @@
 		97AC1A0A256919E7008727E0 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		97AC1A0B256919E7008727E0 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		97AC1A4C256B0391008727E0 /* StateSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateSelectTableViewController.swift; sourceTree = "<group>"; };
-		97AC1A51256B07AF008727E0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		97AC1A51256B07AF008727E0 /* ConstantsStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsStates.swift; sourceTree = "<group>"; };
 		97AC6EA8256DEF830081DD1F /* StateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTableViewCell.swift; sourceTree = "<group>"; };
 		97AC6EA9256DEF830081DD1F /* StateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StateTableViewCell.xib; sourceTree = "<group>"; };
 		97AC6EAF256DF0E10081DD1F /* StateTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTitle.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				97403A3C256247E400B64CED /* AppDelegate.swift */,
 				97403A40256247E400B64CED /* tempHomeViewController.swift */,
 				97403A3E256247E400B64CED /* SceneDelegate.swift */,
-				97AC1A51256B07AF008727E0 /* Constants.swift */,
+				97AC1A51256B07AF008727E0 /* ConstantsStates.swift */,
 				97403A47256247E500B64CED /* LaunchScreen.storyboard */,
 				9731510525638DC50090BD19 /* Assets.xcassets */,
 				97403A4A256247E500B64CED /* Info.plist */,
@@ -479,7 +479,7 @@
 				972A92692583560D00538DA6 /* APIKey.swift in Sources */,
 				972A92282581664A00538DA6 /* NewsData.swift in Sources */,
 				97403A3D256247E400B64CED /* AppDelegate.swift in Sources */,
-				97AC1A52256B07AF008727E0 /* Constants.swift in Sources */,
+				97AC1A52256B07AF008727E0 /* ConstantsStates.swift in Sources */,
 				97AC6EAA256DEF830081DD1F /* StateTableViewCell.swift in Sources */,
 				97411C572564506B000C6FED /* HomeViewController.swift in Sources */,
 				97411C412563A4AF000C6FED /* MapsViewController.swift in Sources */,

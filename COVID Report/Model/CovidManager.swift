@@ -41,14 +41,7 @@ struct CovidManager {
                         let json = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
                         
                         guard let covidData = json as? [Dictionary<String, Any>] else {return}
-                        
-//                        for data: Dictionary<String, Any> in covidData{
-//                            if let infected = data["positive"] as? Dictionary<String, Any>{
-//                                //here the data in address: { .. } is available
-//                                //for example
-//                                print(infected["positive"] ?? "")
-//                            }
-//                        }
+
                         var covidModel = [CovidModel]()
                         for x in stride(from: covidData.count - 1, through: 0, by: -1) {
                             
@@ -58,19 +51,12 @@ struct CovidManager {
                             let recoveredNumber = covidData[x]["recovered"] as? Int ?? 0
                             let updateTime = covidData[x]["dateChecked"] as? String ?? "2020-00-00T00:00:00Z"
                             let today = covidData[x]["date"] as! Int
-//                            let month = covidData[x]["month"] as! String
                             
                             covidModel.append(CovidModel(positive: infectedNumber, death: deathNumber, onVentilatorCurrently: VentilatorNumber, recovered: recoveredNumber, lastModified: updateTime, date: today))
                         }
-//                        let numberOfPositiveCase = covidData[0]["positive"] as! Int
-//                        let numberOfDeathCase = covidData[0]["death"] as! Int
-                        
-//                        let covidModel = CovidModel(positive: numberOfPositiveCase , death: numberOfDeathCase)
-//                        print(covidModel)
-                        
+
                         self.delegate?.didUpdateCovid(self, covidModel)
-//                        let covidVC = HomeViewController()
-//                        covidVC.didUpdateCovid(covid: covidModel)
+
                         
                     }
                     catch{
