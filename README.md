@@ -69,10 +69,10 @@ Personal Project and in prosess.
 * [x] Design the UI/UX from scratch for easy access for the user.
   * [x] Choose color for user friendly
   * [x] Get icons to display the cases and navigation bars.
-* [ ] Disbribution of the live data according to the entire United States and each states.
+* [x] Disbribution of the live data according to the entire United States and each states.
   * [x] Created segue for tableView to display states for user to choose.
-  * [ ] Get the results and update the new data and chart in main.
-  * [ ] Create search bar in the StateTableView for the easy access.
+  * [x] Get the results and update the new data and chart in main.
+  * [x] Create search bar in the StateTableView for the easy access.
 * [x] Get Covid-19 related news APIs and display in the News tap.
 * [ ] Use mapkit or googlemap SDK for visualizing the infected numbers with colored circle.
 
