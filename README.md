@@ -1,5 +1,5 @@
 # COVID-Report-2
-Personal Project and in prosess.
+Personal Project and in process.
 
 ![Copy of COVID-19 Report](https://user-images.githubusercontent.com/47404333/101321490-4bfb5600-381a-11eb-878e-6ca0187550fb.png)
 
